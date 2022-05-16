@@ -1,0 +1,18 @@
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+<% if @book.errors.any? %>
+ <%= @book.errors.count %>errors
+ <ul>
+   <% @book.errors.full_messages.each do |message| %>
+   <li><%= message %></li>
+   <%end%>
+ </ul>
+<% end %>
+<h2>本のタイトル</h2>
+<p><%= @book.title %></p>
+
+<h2>感想</h2>
+<p><%= @book.body %></p>
+<%= link_to "Edit", edit_book_path(@book.id) %>
+<%= link_to "Back", "/books" %>
